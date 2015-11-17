@@ -1,0 +1,87 @@
+{
+    "fullsail_log" : {
+        "title" : "Fullsail Log",
+        "json" : true,
+        "file-pattern" : ".*_(error|main|snap)\\.json|feed_master.*|jcc.*\\.json.*|monitor.*\\.json.*",
+        "description" : "ff",
+        "convert-to-local-time" : true,
+        "line-format" : [
+            { "field" : "ts" },
+            " ",
+	    { "field" : "lvl" },
+	    " [",
+            { "field" : "prc" },
+            "] (",
+            { "field" : "fi" },
+            ") ",
+            { "field" : "user" },
+            " ",
+            { "field" : "msg" }
+        ],
+        "level-field" : "lvl",
+        "timestamp-field": "ts",
+        "body-field" : "msg",
+        "value" : {
+            "msg" : {
+                 "kind" : "string"
+            },
+            "fi" : {
+                "kind" : "string"
+            },
+            "ccid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "ccsn" : {
+                "kind" : "string"
+            },
+            "cpid" : {
+                "kind" : "string"
+            },
+            "dct1" : {
+                "kind" : "string"
+            },
+            "dct2" : {
+                "kind" : "string"
+            },
+            "plid" : {
+                "kind" : "string"
+            },
+            "pllb" : {
+                "kind" : "string"
+            },
+            "plrd" : {
+                "kind" : "string"
+            },
+            "pod" : {
+                "kind" : "string"
+            },
+            "snii" : {
+                "kind" : "string"
+            },
+            "snlb" : {
+                "kind" : "string"
+            },
+            "snrd" : {
+                "kind" : "string"
+            },
+            "snmg" : {
+                "kind" : "string"
+            },
+            "inv" : {
+                "kind" : "string"
+            },
+            "prc" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "suid" : {
+                "kind" : "string"
+            },
+            "user" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        }
+    }
+}
