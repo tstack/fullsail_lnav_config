@@ -3,7 +3,7 @@
         "title" : "Fullsail Log",
         "json" : true,
         "file-pattern" : ".*_(error|main|snap)\\.json|feed_master.*|jcc.*\\.json.*|monitor.*\\.json.*",
-        "description" : "ff",
+        "description" : "Log format for the SnapLogic platform",
         "convert-to-local-time" : true,
         "line-format" : [
             { "field" : "ts" },
