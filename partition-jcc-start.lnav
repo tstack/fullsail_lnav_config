@@ -1,0 +1,9 @@
+#
+# @synopsis: partition-jcc-start
+# @description: Partition the log view by JCC startup times
+#
+
+;UPDATE fullsail_log SET log_part = 'JCC Start: ' || log_time WHERE log_text LIKE '%Creating new class store directory:%';
+
+;SELECT 'Created ' || changes() || ' partitions(s)';
+
