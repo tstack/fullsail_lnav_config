@@ -1,0 +1,19 @@
+#
+# @synopsis: partition-pipe-stages
+# @description: Partition the log view by stages of pipeline execution
+#
+
+;UPDATE fullsail_log
+    SET log_part = CASE
+          WHEN msg = 'Creating root pipeline runtime' THEN 'Linking and Loading: ' || $1
+          WHEN msg = 'Preparing runtime on CC' THEN 'Handing off to CC: ' || $1
+          WHEN msg = 'Preparing pipeline: ' || $1 THEN 'Preparing on CC: ' || $1
+          WHEN msg LIKE 'Total time taken to prepare pipeline%' THEN 'Executing: ' || $1
+        END
+  WHERE (msg = 'Creating root pipeline runtime' AND plrd = $1)
+     OR (msg = 'Preparing runtime on CC' AND plrd = $1)
+     OR (msg = 'Preparing pipeline: ' || $1)
+     OR (msg LIKE ('Total time taken to prepare pipeline ' || $1 || '%'));
+
+;SELECT 'Created ' || changes() || ' partitions(s)';
+
