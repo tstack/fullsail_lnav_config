@@ -8,7 +8,7 @@
         "line-format" : [
             { "field" : "ts" },
             " ",
-	    { "field" : "lvl" },
+	    { "field" : "lvl", "min-width" : 5, "align": "left" },
 	    " [",
             { "field" : "prc" },
             "] (",
@@ -39,11 +39,14 @@
                 "kind" : "string"
             },
             "dct1" : {
-                "kind" : "string"
+                "kind" : "json"
             },
             "dct2" : {
-                "kind" : "string"
+                "kind" : "json"
             },
+	    "exc" : {
+	    	"kind" : "string"
+	    },
             "plid" : {
                 "kind" : "string"
             },
@@ -77,6 +80,14 @@
             },
             "suid" : {
                 "kind" : "string"
+            },
+	    "jid" : {
+ 	    	"kind" : "string",
+		"identifier" : true
+	    },
+            "xid" : {
+                "kind" : "string",
+                "identifier" : true
             },
             "user" : {
                 "kind" : "string",
