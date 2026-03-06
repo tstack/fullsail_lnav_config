@@ -1,0 +1,94 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "sl_runtime_log": {
+        "title": "SnapLogic JCC Runtime Log",
+        "file-type": "json",
+        "level-field": "state",
+        "level": {
+            "error": "^Failed$"
+        },
+        "line-format": [
+            {
+                "field": "__timestamp__"
+            },
+            {
+                "prefix": " [",
+                "field": "nodeLabel",
+                "suffix": "] "
+            },
+            {
+                "field": "state"
+            },
+            {
+                "prefix": " ",
+                "field": "pipelinePath"
+            },
+            {
+                "prefix": " ",
+                "field": "ruuid"
+            }
+        ],
+        "value": {
+            "pipelinePath": {
+                "kind": "string",
+                "identifier": true
+            },
+            "state": {
+                "kind": "string",
+                "identifier": true
+            },
+            "createTime": {
+                "kind": "string"
+            },
+            "slotCount": {
+                "kind": "integer"
+            },
+            "invoker": {
+                "kind": "string",
+                "identifier": true
+            },
+            "invokerType": {
+                "kind": "string",
+                "identifier": true
+            },
+            "rootInvoker": {
+                "kind": "string",
+                "identifier": true
+            },
+            "runtimeLabel": {
+                "kind": "string",
+                "identifier": true,
+                "hidden": true
+            },
+            "nodeLabel": {
+                "kind": "string",
+                "identifier": true
+            },
+            "runtimePathId": {
+                "kind": "string",
+                "identifier": true,
+                "hidden": true
+            },
+            "ruuid": {
+                "kind": "string",
+                "identifier": true
+            },
+            "parentRuuid": {
+                "kind": "string",
+                "identifier": true
+            },
+            "failure": {
+                "kind": "string"
+            },
+            "reason": {
+                "kind": "string"
+            },
+            "resolution": {
+                "kind": "string"
+            },
+            "snapRuntimes": {
+                "kind": "json"
+            }
+        }
+    }
+}

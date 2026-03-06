@@ -1,0 +1,40 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "sl_metrics_log": {
+        "title": "SnapLogic JCC metrics log",
+        "file-type": "json",
+        "line-format": [
+            {
+                "field": "__timestamp__"
+            },
+            {
+                "prefix": " [",
+                "field": "c",
+                "suffix": "] "
+            },
+            {
+                "field": "m",
+                "suffix": ": "
+            },
+            {
+                "field": "v"
+            }
+        ],
+        "timestamp-field": "t",
+        "timestamp-divisor": 1000,
+        "ordered-by-time": false,
+        "value": {
+            "c":{
+                "kind": "string",
+                "identifier": true
+            },
+            "m": {
+                "kind": "string",
+                "identifier": true
+            },
+            "v": {
+                "kind": "float"
+            }
+        }
+    }
+}

@@ -1,97 +1,151 @@
 {
-    "fullsail_log" : {
-        "title" : "Fullsail Log",
-        "json" : true,
-        "file-pattern" : ".*_(error|main|snap)\\.json|feed_master.*|jcc.*\\.json.*|monitor.*\\.json.*",
-        "description" : "Log format for the SnapLogic platform",
-        "convert-to-local-time" : true,
-        "line-format" : [
-            { "field" : "ts" },
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "fullsail_log": {
+        "title": "Fullsail Log",
+        "json": true,
+        // "file-pattern": ".*_(error|main|snap)\\.json|feed_master.*|jcc.*\\.json.*|monitor.*\\.json.*",
+        "description": "Log format for the SnapLogic platform",
+        "convert-to-local-time": true,
+        "line-format": [
+            {
+                "field": "ts"
+            },
             " ",
-	    { "field" : "lvl", "min-width" : 5, "align": "left" },
-	    " [",
-            { "field" : "prc" },
+            {
+                "field": "lvl",
+                "min-width": 5,
+                "align": "left"
+            },
+            " [",
+            {
+                "field": "prc"
+            },
             "] (",
-            { "field" : "fi" },
+            {
+                "field": "fi"
+            },
             ") ",
-            { "field" : "user" },
+            {
+                "field": "user"
+            },
             " ",
-            { "field" : "msg" }
+            {
+                "field": "msg"
+            }
         ],
-        "level-field" : "lvl",
+        "level-field": "lvl",
         "timestamp-field": "ts",
-        "body-field" : "msg",
-        "value" : {
-            "msg" : {
-                 "kind" : "string"
+        "body-field": "msg",
+        "opid-field": "xid",
+        "thread-id-field": "prc",
+        "value": {
+            "msg": {
+                "kind": "string"
             },
-            "fi" : {
-                "kind" : "string"
+            "fi": {
+                "kind": "string"
             },
-            "ccid" : {
-                "kind" : "string",
-                "identifier" : true
+            "ccid": {
+                "kind": "string",
+                "identifier": true
             },
-            "ccsn" : {
-                "kind" : "string"
+            "ccsn": {
+                "kind": "string"
             },
-            "cpid" : {
-                "kind" : "string"
+            "cpid": {
+                "kind": "string"
             },
-            "dct1" : {
-                "kind" : "json"
+            "dct1": {
+                "kind": "json"
             },
-            "dct2" : {
-                "kind" : "json"
+            "dct2": {
+                "kind": "json"
             },
-	    "exc" : {
-	    	"kind" : "string"
-	    },
-            "plid" : {
-                "kind" : "string"
+            "exc": {
+                "kind": "string"
             },
-            "pllb" : {
-                "kind" : "string"
+            "plid": {
+                "kind": "string"
             },
-            "plrd" : {
-                "kind" : "string"
+            "pllb": {
+                "kind": "string"
             },
-            "pod" : {
-                "kind" : "string"
+            "plrd": {
+                "kind": "string"
             },
-            "snii" : {
-                "kind" : "string"
+            "pod": {
+                "kind": "string"
             },
-            "snlb" : {
-                "kind" : "string"
+            "snii": {
+                "kind": "string"
             },
-            "snrd" : {
-                "kind" : "string"
+            "snlb": {
+                "kind": "string",
+                "hidden": true
             },
-            "snmg" : {
-                "kind" : "string"
+            "snrd": {
+                "kind": "string",
+                "hidden": true
             },
-            "inv" : {
-                "kind" : "string"
+            "snmg": {
+                "kind": "string"
             },
-            "prc" : {
-                "kind" : "string",
-                "identifier" : true
+            "inv": {
+                "kind": "string"
             },
-            "suid" : {
-                "kind" : "string"
+            "prc": {
+                "kind": "string",
+                "identifier": true
             },
-	    "jid" : {
- 	    	"kind" : "string",
-		"identifier" : true
-	    },
-            "xid" : {
-                "kind" : "string",
-                "identifier" : true
+            "suid": {
+                "kind": "string"
             },
-            "user" : {
-                "kind" : "string",
-                "identifier" : true
+            "jid": {
+                "kind": "string",
+                "identifier": true
+            },
+            "xid": {
+                "kind": "string",
+                "identifier": true
+            },
+            "user": {
+                "kind": "string",
+                "identifier": true
+            }
+        },
+        "opid": {
+            "description": {
+                "execute-job": {
+                    "format": [
+                        {
+                            "field": "msg",
+                            "extractor": "^Starting execution of (.*)",
+                            "prefix": "Job "
+                        }
+                    ]
+                }
+            }
+        },
+        "tags": {
+            "jcc-start": {
+                "description": "Tag for JCC startup",
+                "paths": [
+                    {
+                        "glob": "*/jcc.*"
+                    }
+                ],
+                "level": "info",
+                "pattern": "Updating feature flags for: com\\.snaplogic\\.common\\.ServerBootstrap"
+            },
+            "jcc-restart": {
+                "description": "Tag for JCC restart request",
+                "paths": [
+                    {
+                        "glob": "*/jcc.*"
+                    }
+                ],
+                "level": "info",
+                "pattern": "Restart requested by control plane"
             }
         }
     }
