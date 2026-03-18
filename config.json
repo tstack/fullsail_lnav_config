@@ -1,0 +1,19 @@
+{
+    "$schema": "https://lnav.org/schemas/config-v1.schema.json",
+    "log": {
+        "demux-json": {
+            "sl-grafana1": {
+                "enabled": true,
+                "timestamp": "timestamp",
+                "body": "line",
+                "mux_id": "fields/hostname"
+            },
+            "sl-grafana2": {
+                "enabled": true,
+                "timestamp": "timestamp",
+                "body": "line",
+                "mux_id": "fields/node_name"
+            }
+        }
+    }
+}
