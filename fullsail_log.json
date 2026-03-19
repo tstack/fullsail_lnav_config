@@ -132,6 +132,14 @@
                             "prefix": "Pipeline "
                         }
                     ]
+                },
+                "push": {
+                    "format": [
+                        {
+                            "field": "msg",
+                            "extractor": "^(?:pushInsertions|pushUpdates)"
+                        }
+                    ]
                 }
             }
         },
