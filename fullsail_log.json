@@ -38,6 +38,7 @@
         "body-field": "msg",
         "opid-field": "xid",
         "thread-id-field": "prc",
+        "src-location-field": "fi",
         "value": {
             "msg": {
                 "kind": "string"
