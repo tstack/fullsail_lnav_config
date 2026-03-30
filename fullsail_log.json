@@ -65,6 +65,9 @@
             "exc": {
                 "kind": "string"
             },
+            "tb": {
+                "kind": "string"
+            },
             "plid": {
                 "kind": "string"
             },
@@ -112,6 +115,10 @@
             "user": {
                 "kind": "string",
                 "identifier": true
+            },
+            "job": {
+                "kind": "string",
+                "identifier": true
             }
         },
         "opid": {
@@ -139,6 +146,34 @@
                         {
                             "field": "msg",
                             "extractor": "^(?:pushInsertions|pushUpdates)"
+                        }
+                    ]
+                },
+                "job-started": {
+                    "format": [
+                        {
+                            "field": "msg",
+                            "extractor": "^(Job started|Plex job \\w+ fired up|Invoking ultra pipeline|Run time of job was missed)"
+                        },
+                        {
+                            "prefix": ": ",
+                            "field": "job"
+                        }
+                    ]
+                },
+                "ultra-sub": {
+                    "format": [
+                        {
+                            "field": "msg",
+                            "extractor": "^Checking ultra subscription for job:"
+                        }
+                    ]
+                },
+                "updating-runtimes": {
+                    "format": [
+                        {
+                            "field": "msg",
+                            "extractor": "Updating the next run times for:"
                         }
                     ]
                 }

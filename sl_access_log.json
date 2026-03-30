@@ -1,0 +1,76 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "sl_access_log": {
+        "description": "",
+        "regex": {
+            "std": {
+                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-)(?: \"(?:-|xid=(?<xid>[^\"]*))\" \"(?:-|(?<cs_user_agent>[^\"]+))\")?\\s*(?<cs_bytes>\\d+)\\s+(?<request_time>\\d+\\.\\d+)\\s*(?<upstream_connect_time>\\d+\\.\\d+)\\s*(?<upstream_header_time>\\d+\\.\\d+)\\s*(?<upstream_response_time>\\d+\\.\\d+)\\s*(?<body>.*)"
+            }
+        },
+        "opid-field": "xid",
+        "value": {
+            "c_ip": {
+                "kind": "string",
+                "collate": "ipaddress",
+                "identifier": true,
+                "description": "The client IP address"
+            },
+            "cs_bytes": {
+                "kind": "integer"
+            },
+            "cs_method": {
+                "kind": "string",
+                "identifier": true
+            },
+            "cs_uri_query": {
+                "kind": "string"
+            },
+            "cs_uri_stem": {
+                "kind": "string",
+                "identifier": true
+            },
+            "cs_user_agent": {
+                "kind": "string",
+                "identifier": true
+            },
+            "cs_username": {
+                "kind": "string",
+                "identifier": true
+            },
+            "cs_version": {
+                "kind": "string",
+                "identifier": true
+            },
+            "request_time": {
+                "kind": "float"
+            },
+            "sc_bytes": {
+                "kind": "integer"
+            },
+            "sc_status": {
+                "kind": "integer",
+                "foreign-key": true
+            },
+            "timestamp": {
+                "kind": "string"
+            },
+            "upstream_connect_time": {
+                "kind": "float"
+            },
+            "upstream_header_time": {
+                "kind": "float"
+            },
+            "upstream_response_time": {
+                "kind": "float"
+            },
+            "xid": {
+                "kind": "string"
+            }
+        },
+        "sample": [
+            {
+                "line": "127.0.0.1 - machine@snaplogic.com [27/Mar/2026:16:20:44 -0700] \"GET /api/1/rest/asset/group/members/org/?caller=machine%40snaplogic.com HTTP/1.1\" 200 207 \"xid=71383c7d-c527-481e-ab18-43282216b1dc\" \"snapi:authorizer.py:183 93201@Timothys-MacBook-Pro.local\" 516 0.015 0.000 0.014 0.014"
+            }
+        ]
+    }
+}
