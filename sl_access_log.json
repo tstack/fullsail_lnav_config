@@ -1,11 +1,16 @@
 {
     "$schema": "https://lnav.org/schemas/format-v1.schema.json",
     "sl_access_log": {
-        "description": "",
+        "description": "Format for the SnapLogic nginx frontend log",
+        "multiline": false,
         "regex": {
             "std": {
-                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-)(?: \"(?:-|xid=(?<xid>[^\"]*))\" \"(?:-|(?<cs_user_agent>[^\"]+))\")?\\s*(?<cs_bytes>\\d+)\\s+(?<request_time>\\d+\\.\\d+)\\s*(?<upstream_connect_time>\\d+\\.\\d+)\\s*(?<upstream_header_time>\\d+\\.\\d+)\\s*(?<upstream_response_time>\\d+\\.\\d+)\\s*(?<body>.*)"
+                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-)(?: \"(?:-|xid=(?<xid>[^\"]*))\" \"(?:-|(?<cs_user_agent>[^\"]+))\")?\\s*(?<cs_bytes>\\d+)\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?<upstream_response_time>\\d+\\.\\d+)\\s*(?<body>.*)"
             }
+        },
+        "level-field": "sc_status",
+        "level": {
+            "error": "^[^123].*"
         },
         "opid-field": "xid",
         "opid": {
@@ -84,6 +89,9 @@
         "sample": [
             {
                 "line": "127.0.0.1 - machine@snaplogic.com [27/Mar/2026:16:20:44 -0700] \"GET /api/1/rest/asset/group/members/org/?caller=machine%40snaplogic.com HTTP/1.1\" 200 207 \"xid=71383c7d-c527-481e-ab18-43282216b1dc\" \"snapi:authorizer.py:183 93201@Timothys-MacBook-Pro.local\" 516 0.015 0.000 0.014 0.014"
+            },
+            {
+                "line": "127.0.0.1 - - [30/Mar/2026:21:32:40 -0700] \"GET /api/1/rest/plex/snaplogic/rt/cloud/dev?strict=False HTTP/1.1\" 502 150 \"xid=68adb9e7-f5a4-4a3e-8e34-089b8a8e0546\" \"snapi:ultra_watchdog.py:803 66491@Timothys-MacBook-Pro.local\" 505 0.002 - - 0.002"
             }
         ]
     }
