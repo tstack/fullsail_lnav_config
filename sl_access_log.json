@@ -8,6 +8,19 @@
             }
         },
         "opid-field": "xid",
+        "opid": {
+            "description": {
+                "cc-heartbeat": {
+                    "format": [
+                        {
+                            "prefix": "CC Heartbeat: ",
+                            "field": "cs_uri_stem",
+                            "extractor": "/api/1/rest/cc/heartbeat/(.*)"
+                        }
+                    ]
+                }
+            }
+        },
         "value": {
             "c_ip": {
                 "kind": "string",
