@@ -64,7 +64,8 @@
                 "kind": "float"
             },
             "xid": {
-                "kind": "string"
+                "kind": "string",
+                "identifier": true
             }
         },
         "sample": [
