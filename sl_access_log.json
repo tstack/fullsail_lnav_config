@@ -5,7 +5,7 @@
         "multiline": false,
         "regex": {
             "std": {
-                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-)(?: \"(?:-|xid=(?<xid>[^\"]*))\" \"(?:-|(?<cs_user_agent>[^\"]+))\")?\\s*(?<cs_bytes>\\d+)\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?<upstream_response_time>\\d+\\.\\d+)\\s*(?<body>.*)"
+                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-)(?: \"(?:-|xid=(?<xid>[^\";]*)[^\"]*)\" \"(?:-|(?<cs_user_agent>[^\"]+))\")?\\s*(?<cs_bytes>\\d+)\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?<upstream_response_time>\\d+\\.\\d+)\\s*(?<body>.*)"
             }
         },
         "level-field": "sc_status",
@@ -21,6 +21,15 @@
                             "prefix": "CC Heartbeat: ",
                             "field": "cs_uri_stem",
                             "extractor": "/api/1/rest/cc/heartbeat/(.*)"
+                        }
+                    ]
+                },
+                "active-queues": {
+                    "format": [
+                        {
+                            "prefix": "Active Queues: ",
+                            "field": "cs_uri_stem",
+                            "extractor": "/api/1/rest/slsched/queues/(.*)"
                         }
                     ]
                 }
