@@ -145,7 +145,7 @@
                     "format": [
                         {
                             "field": "msg",
-                            "extractor": "^(?:pushInsertions|pushUpdates)"
+                            "extractor": "^(pushInsertions|pushUpdates)"
                         }
                     ]
                 },
@@ -165,7 +165,7 @@
                     "format": [
                         {
                             "field": "msg",
-                            "extractor": "^Checking ultra subscription for job:"
+                            "extractor": "^(Checking ultra subscription for job: .*)"
                         }
                     ]
                 },
@@ -173,7 +173,7 @@
                     "format": [
                         {
                             "field": "msg",
-                            "extractor": "Updating the next run times for:"
+                            "extractor": "^(Updating the next run times for: .*)"
                         }
                     ]
                 }
