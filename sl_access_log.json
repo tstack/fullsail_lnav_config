@@ -5,7 +5,7 @@
         "multiline": false,
         "regex": {
             "std": {
-                "pattern": "^(?<c_ip>[\\w\\.:\\-]+)\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-) \"(?:-|xid=(?<xid>[^\";]*)[^\"]*|(?<cs_referer>[^\"]+))\" \"(?:-|(?<cs_user_agent>[^\"]+))\"\\s+(?<cs_bytes>\\d+)(?:\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_response_time>\\d+\\.\\d+))\\s*(?<body>.*))?"
+                "pattern": "^(?<c_ip>[\\w\\.:\\-]+|\\[[\\d.:]+\\])\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-) \"(?:-|xid=(?<xid>[^\";]*)[^\"]*|(?<cs_referer>[^\"]+))\" \"(?:-|(?<cs_user_agent>[^\"]+))\"\\s+(?<cs_bytes>\\d+)(?:\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_response_time>\\d+\\.\\d+))\\s*(?<body>.*))?"
             }
         },
         "level-field": "sc_status",
@@ -109,6 +109,9 @@
             },
             {
                 "line": "127.0.0.1 - - [31/Mar/2026:10:41:12 -0700] \"GET /sl/css/third_party/multi-select.css HTTP/1.1\" 304 0 \"http://localhost:8888/sl/project-manager.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\" 676 0.000 - - -"
+            },
+            {
+                "line": "[0:0:0:0:0:0:0:1] - - [01/Apr/2026:20:17:46 +0000] \"GET /api/1/rest/feed-master/queue/snaplogic/projects/shared/UltraMapperTask HTTP/1.1\" 200 498 \"-\" \"-\" 50"
             }
         ]
     }
