@@ -8,6 +8,7 @@
                 "pattern": "^(?<c_ip>[\\w\\.:\\-]+|\\[[\\d.:]+\\])\\s+[\\w\\.\\-]+\\s+(?:-|(?<cs_username>\\S+))\\s+\\[(?<timestamp>[^\\]]+)\\] \"(?:\\-|(?<cs_method>\\w+) (?<cs_uri_stem>[^ \\?\"]+)(?:\\?(?<cs_uri_query>[^ ]*))?(?: (?<cs_version>[\\w\\/\\.]+))?)\" (?<sc_status>\\d+) (?<sc_bytes>\\d+|-) \"(?:-|xid=(?<xid>[^\";]*)[^\"]*|(?<cs_referer>[^\"]+))\" \"(?:-|(?<cs_user_agent>[^\"]+))\"\\s+(?<cs_bytes>\\d+)(?:\\s+(?<request_time>\\d+\\.\\d+)\\s*(?:-|(?<upstream_connect_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_header_time>\\d+\\.\\d+))\\s*(?:-|(?<upstream_response_time>\\d+\\.\\d+))\\s*(?<body>.*))?"
             }
         },
+        "duration-field": "upstream_response_time",
         "level-field": "sc_status",
         "level": {
             "error": "^[^123].*"
